@@ -11,30 +11,36 @@
     <div class="container">
         <form>
         <h2>CURRENCY CONVERTOR</h2>
-        <div class="amount-container">
+        <div class="amount">
+            <p>ENTER AMOUNT</p>
             <input type="text" value="1">
+            </div>
             <div class="dropdown">
                 <div class="from">
                     <p>FROM</p>
                     <div class="dropdown-list">
                     <img src="https://flagsapi.com/US/flat/64.png">
+                    
+                    <select name="from"></select>
                     </div>
-                    <select class="from"></select>
                 </div>
-                <i class ="icon"></i>
-                <div class="from">
-                    <p>FROM</p>
+                <i class ="fa-solid fa-right-left"></i>
+                <div class="to">
+                    <p>TO</p>
                     <div class="dropdown-list">
                     <img src="https://flagsapi.com/IN/flat/64.png">
+                    
+                    <select name="to"></select>
                     </div>
-                    <select class="from"></select>
                 </div>
             </div>
             <div class="mssg">1 USD=80 INR</div>
             <button >GET EXCHANGE</button>
-        </div>
+        
         </form>
     </div>
+    <script src="code.js"></script>
  <script src="app.js"></script>
+ 
 </body>
 </html>
