@@ -36,3 +36,46 @@ bttn.addEventListener("click",(evt)=>{
     updateExchangeRate();
 })
 
+const updateExchangeRate = async () => {
+    let amount = document.querySelector(".amount input");
+    let amtvalue = amount.value;
+    if (amtvalue === "" || amtvalue < 1) {
+        amtvalue = 1;
+        amount.value = "1";
+    }
+
+    const from = fromCurr.value;
+    const to = toCurr.value;
+    const url = `https://api.apilayer.com/exchangerates_data/convert?from=${from}&to=${to}&amount=${amtvalue}`;
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "apikey": "qdaI8RPWJo3J3c3CqdTxFmZGaPPAYQxF" 
+            }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            const finalAmt = data.result;
+            mssg.innerText = `${amtvalue} ${from} = ${finalAmt.toFixed(2)} ${to}`;
+        } else {
+            mssg.innerText = "Something went wrong. Please check the currency or try again.";
+            console.error(data);
+        }
+    } catch (error) {
+        console.error("API error:", error);
+        mssg.innerText = "Error fetching exchange rate.";
+    }
+};
+
+window.addEventListener("load",()=>{
+    updateExchangeRate();
+})
+
+
+
+
+
